@@ -15,7 +15,6 @@ export class GetUrlInfoService {
       }
 
       const URL = await URLRepository.findOne({ id : url_id });
-      console.log(URL);
       if( !URL ){
         throw new HttpException(404, 'Url not found');
       }
