@@ -1,7 +1,7 @@
 import express from 'express';
 import 'express-async-errors';
-import '../database/connection';
 import 'reflect-metadata';
+import '../database';
 
 import URLRoutes from '../routes/url.routes'
 import exceptionError from '../middleware/async-exception-errors'
