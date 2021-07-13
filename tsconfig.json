@@ -4,6 +4,8 @@
 	  "module": "commonjs",
 	  "target": "ES2020",
 	  "esModuleInterop": true,
-	  "allowJs": true
+	  "allowJs": true,
+	  "emitDecoratorMetadata": true,
+	  "experimentalDecorators": true
 	}
 }
