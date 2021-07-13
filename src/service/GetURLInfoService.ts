@@ -1,27 +1,23 @@
-import { getConnection } from "typeorm";
-import { UrlEntity } from "../database/entities/UrlEntity";
 import HttpException from "../error/HttpException";
-
+import { getCustomRepository } from 'typeorm';
+import URLRepository from "../database/repositories/URLRepository";
 export class GetUrlInfoService {
   async getInfoUrl ( url_id?: string) {
 
-    const connection = getConnection();
-    const transaction = await connection.manager.transaction(async manager => {
-      const URLRepository = manager.getRepository(UrlEntity);
+      const urlRepository = getCustomRepository(URLRepository);
 
       if( !url_id ){
-        const URL = await URLRepository.find();
+        const URL = await urlRepository.find();
         return URL;
       }
 
-      const URL = await URLRepository.findOne({ id : url_id });
+      const URL = await urlRepository.findOne({ id : url_id });
       if( !URL ){
         throw new HttpException(404, 'Url not found');
       }
       return URL;
     
-    })
-    return transaction;
+
 
   }
 

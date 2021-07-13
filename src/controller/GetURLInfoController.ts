@@ -10,9 +10,9 @@ export class GetURLInfoController {
     if( !url_id ) {
       throw new HttpException(400, 'Invalid Params');
     }
+    
     const service = new GetUrlInfoService();
     const data = await service.getInfoUrl(url_id);
-    console.log('passou do data')
     if( data ) {
       response.status(200).json(data);
     }
