@@ -1,6 +1,5 @@
 export class ServerError extends Error {
   status: 500;
-
   message: string;
 
   constructor() {

@@ -7,36 +7,21 @@ import {
 } from "../error";
 import { Response, Request, NextFunction } from "express";
 
-interface IErrors {
-  httpError:
+export const exceptionError = (
+  error:
     | ServerError
     | UnauthorizedError
     | InvalidCredentialsError
     | NotFoundError
-    | MissingParamError;
-}
-
-export const exceptionError = (
-  error?:
-     ServerError
-    || UnauthorizedError
-    || InvalidCredentialsError
-    || NotFoundError
-    || MissingParamError,
+    | MissingParamError,
   request: Request,
   response: Response,
   next: NextFunction
 ) => {
-  const typesErrors = [
-    ServerError,
-    UnauthorizedError,
-    InvalidCredentialsError,
-    NotFoundError,
-    MissingParamError,
-  ];
-  console.log(error);
   if (error instanceof Error) {
-    return response.status(error.status || 406).json({ error: error.message });
+    return response
+      .status(error.status || 406)
+      .json({ error: error.message, status: error.status });
   }
 
   return response.status(500).json({

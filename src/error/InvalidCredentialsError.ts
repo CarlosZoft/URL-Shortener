@@ -3,7 +3,7 @@ export class InvalidCredentialsError extends Error {
   message: string;
 
   constructor(message: string) {
-    super(`Invalid Credentials : ${message}`);
-    this.message = `Invalid Credentials : ${message}`;
+    super(`Invalid Credentials ${message}`);
+    this.message = `Invalid Credentials ${message}`;
   }
 }

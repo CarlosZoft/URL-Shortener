@@ -3,7 +3,7 @@ export class NotFoundError extends Error {
   message: string;
 
   constructor(message: string) {
-    super(`Not Found : ${message}`);
-    this.message = `Not Found : ${message}`;
+    super(`Not Found ${message}`);
+    this.message = `Not Found ${message}`;
   }
 }
