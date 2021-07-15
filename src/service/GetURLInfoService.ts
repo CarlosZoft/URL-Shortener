@@ -19,7 +19,7 @@ export class GetUrlInfoService {
     const urlRepository = getCustomRepository(URLRepository);
 
     const URL = await urlRepository.find();
-    if (!URL) {
+    if (!URL.length) {
       throw new NotFoundError("URLS");
     }
     return URL;

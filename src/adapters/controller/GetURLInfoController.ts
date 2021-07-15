@@ -1,25 +1,23 @@
-import { GetUrlInfoService } from "./../../service/GetURLInfoService";
+import { GetUrlInfoService } from "../../service/GetURLInfoService";
 import { Response, Request } from "express";
 import { ServerError } from "../../error/ServerError";
 
 export class GetURLInfoController {
-  private Service = new GetUrlInfoService();
-
   async getInfoUrl(request: Request, response: Response) {
     const { url_id } = request.params;
 
-    const data = await this.Service.getInfoUrl(url_id);
+    const service = new GetUrlInfoService();
+    const data = await service.getInfoUrl(url_id);
     if (data) {
       response.status(200).json(data);
-    }
-    throw new ServerError();
+    } else throw new ServerError();
   }
   async getInfoUrls(request: Request, response: Response) {
-    const data = await this.Service.getInfoUrls();
+    const service = new GetUrlInfoService();
+    const data = await service.getInfoUrls();
 
     if (data) {
       response.status(200).json(data);
-    }
-    throw new ServerError();
+    } else throw new ServerError();
   }
 }
