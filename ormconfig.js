@@ -23,7 +23,7 @@ const development = {
   username: process.env.DATABASE_USER,
   password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE_NAME,
-  logging: true,
+  logging: false,
   synchronize: true,
   entities: ['src/database/entities/*.ts'],
   migrations: ['src/database/migrations/*.ts'],
