@@ -1,3 +1,3 @@
 export interface ServiceInterface {
-  execute(): Object;
+  execute();
 }
