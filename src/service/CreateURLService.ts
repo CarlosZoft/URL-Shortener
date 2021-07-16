@@ -2,10 +2,11 @@ import {
   InvalidCredentialsError,
   MissingParamError,
 } from "./../presentation/error";
+import { URLDtos } from "./../dtos/URLDtos";
 import { getCustomRepository } from "typeorm";
-import URLRepository from "../database/repositories/URLRepository";
 import { fullURLInterface } from "./../dtos/FullURlInterface";
 import { ServiceInterface } from "./../presentation/protocols/ServiceInterface";
+import { URLRepository } from "../database/repositories/URLRepository";
 import crypto from "crypto";
 import linkExpiresDate from "../shared/linkExpires";
 
@@ -16,7 +17,7 @@ export class CreateURLService {
     }
     const urlRepository = getCustomRepository(URLRepository);
 
-    const urlAlreadyExists = await urlRepository.findOne(fullUrl);
+    const urlAlreadyExists = await urlRepository.findOne({ fullUrl });
     if (urlAlreadyExists) {
       throw new InvalidCredentialsError("fullUrl Already exists");
     }
@@ -25,11 +26,12 @@ export class CreateURLService {
     const newUrl = urlRepository.create({
       fullUrl,
       shortUrl,
+      visitQtd: 0,
       linkExpires,
     });
 
     const URL = await urlRepository.save(newUrl);
 
-    return URL;
+    return URLDtos.of(URL);
   }
 }

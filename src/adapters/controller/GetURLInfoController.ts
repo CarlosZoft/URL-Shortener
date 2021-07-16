@@ -9,7 +9,7 @@ export class GetURLInfoController {
     const service = new GetUrlInfoService();
     const data = await service.getInfoUrl(url_id);
     if (data) {
-      response.status(200).json(data);
+      response.status(200).send(data);
     } else throw new ServerError();
   }
   async getInfoUrls(request: Request, response: Response) {
@@ -17,7 +17,7 @@ export class GetURLInfoController {
     const data = await service.getInfoUrls();
 
     if (data) {
-      response.status(200).json(data);
+      response.status(200).send(data);
     } else throw new ServerError();
   }
 }

@@ -10,8 +10,7 @@ export class CreateURLController {
     const service = new CreateURLService();
     const data = service.execute({ fullUrl });
     if (data) {
-      response.status(200).json(data);
-    }
-    throw new ServerError();
+      response.status(200).send(data);
+    } else throw new ServerError();
   }
 }
