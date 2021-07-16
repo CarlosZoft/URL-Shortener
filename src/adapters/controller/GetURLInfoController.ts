@@ -1,6 +1,6 @@
 import { GetUrlInfoService } from "../../service/GetURLInfoService";
 import { Response, Request } from "express";
-import { ServerError } from "../../error/ServerError";
+import { ServerError } from "../../presentation/error/ServerError";
 
 export class GetURLInfoController {
   async getInfoUrl(request: Request, response: Response) {

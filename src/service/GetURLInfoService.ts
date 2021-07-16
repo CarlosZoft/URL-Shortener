@@ -1,4 +1,4 @@
-import { MissingParamError, NotFoundError } from "../error";
+import { MissingParamError, NotFoundError } from "../presentation/error";
 import { getCustomRepository } from "typeorm";
 import URLRepository from "../database/repositories/URLRepository";
 export class GetUrlInfoService {

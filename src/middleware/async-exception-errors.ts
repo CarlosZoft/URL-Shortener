@@ -4,7 +4,7 @@ import {
   InvalidCredentialsError,
   NotFoundError,
   MissingParamError,
-} from "../error";
+} from "../presentation/error";
 import { Response, Request, NextFunction } from "express";
 
 export const exceptionError = (
