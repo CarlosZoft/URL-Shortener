@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "./lib/index.js",
   "scripts": {
-    "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules ./src/index.ts --ignore __tests__",
+    "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules ./src/index.ts",
     "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js",
     "test": "jest --passWithNoTests --runInBand --no-cache"
   },
