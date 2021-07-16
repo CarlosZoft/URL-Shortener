@@ -10,8 +10,8 @@ import { URLRepository } from "../database/repositories/URLRepository";
 import crypto from "crypto";
 import linkExpiresDate from "../shared/linkExpires";
 
-export class CreateURLService {
-  async execute({ fullUrl }: fullURLInterface) {
+export class CreateURLService implements ServiceInterface {
+  async execute({ fullUrl, validDays }: fullURLInterface): Promise<any> {
     if (!fullUrl) {
       throw new MissingParamError("fullUrl");
     }
@@ -22,7 +22,7 @@ export class CreateURLService {
       throw new InvalidCredentialsError("fullUrl Already exists");
     }
     const shortUrl = crypto.randomBytes(3).toString("hex");
-    const linkExpires = linkExpiresDate.dateLinkExpires();
+    const linkExpires = linkExpiresDate.dateLinkExpires(validDays);
     const newUrl = urlRepository.create({
       fullUrl,
       shortUrl,

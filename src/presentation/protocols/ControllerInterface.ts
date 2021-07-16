@@ -1,4 +1,4 @@
-import { Response } from "express";
+import { Response, Request } from "express";
 export interface ControllerInterface {
-  handle(request: Request, response: Response): any;
+  handle(request: Request, response: Response): Promise<any>;
 }

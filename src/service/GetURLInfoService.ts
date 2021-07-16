@@ -1,6 +1,7 @@
+import { URLDtos } from "./../dtos/URLDtos";
 import { MissingParamError, NotFoundError } from "../presentation/error";
 import { getCustomRepository } from "typeorm";
-import URLRepository from "../database/repositories/URLRepository";
+import { URLRepository } from "../database/repositories/URLRepository";
 export class GetUrlInfoService {
   async getInfoUrl(url_id: string) {
     const urlRepository = getCustomRepository(URLRepository);
@@ -13,7 +14,7 @@ export class GetUrlInfoService {
     if (!URL) {
       throw new NotFoundError("URL");
     }
-    return URL;
+    return URLDtos.of(URL);
   }
   async getInfoUrls() {
     const urlRepository = getCustomRepository(URLRepository);
@@ -22,6 +23,6 @@ export class GetUrlInfoService {
     if (!URL.length) {
       throw new NotFoundError("URLS");
     }
-    return URL;
+    return URLDtos.map(URL);
   }
 }

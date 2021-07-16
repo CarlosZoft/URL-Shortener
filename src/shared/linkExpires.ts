@@ -1,8 +1,8 @@
 export default {
   linkExpires: "10d",
-  dateLinkExpires: () => {
+  dateLinkExpires: (days: number) => {
     const now = new Date();
-    now.setDate(now.getDay() + 10);
+    now.setHours(now.getHours() + days * 24);
     return now;
   },
 };
