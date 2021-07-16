@@ -20,6 +20,7 @@
   "homepage": "https://github.com/CarlosZoft/URL-Shortener#readme",
   "description": "",
   "dependencies": {
+    "crypto": "^1.0.1",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "uuid": "^8.3.2"
