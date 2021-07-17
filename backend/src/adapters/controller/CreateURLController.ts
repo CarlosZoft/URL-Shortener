@@ -1,5 +1,5 @@
-import { ServerError } from "./../../presentation/error/ServerError";
-import { ControllerInterface } from "./../../presentation/protocols/ControllerInterface";
+import { ServerError } from "../../presentation/error/ServerError";
+import { ControllerInterface } from "../../presentation/protocols/ControllerInterface";
 import { Request, Response } from "express";
 import { CreateURLService } from "../../service/CreateURLService";
 

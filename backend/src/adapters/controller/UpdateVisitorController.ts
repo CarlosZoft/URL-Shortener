@@ -1,5 +1,5 @@
-import { UpdateVisitorService } from "./../../service/UpdateVisitorService";
-import { ControllerInterface } from "./../../presentation/protocols/ControllerInterface";
+import { UpdateVisitorService } from "../../service/UpdateVisitorService";
+import { ControllerInterface } from "../../presentation/protocols/ControllerInterface";
 import { Request, Response } from "express";
 import { MissingParamError, ServerError } from "../../presentation/error";
 export class UpdateVisitorController implements ControllerInterface {

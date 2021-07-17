@@ -1,11 +1,11 @@
 import {
   InvalidCredentialsError,
   MissingParamError,
-} from "./../presentation/error";
-import { URLDtos } from "./../dtos/URLDtos";
+} from "../presentation/error";
+import { URLDtos } from "../dtos/URLDtos";
 import { getCustomRepository } from "typeorm";
-import { fullURLInterface } from "./../dtos/FullURlInterface";
-import { ServiceInterface } from "./../presentation/protocols/ServiceInterface";
+import { fullURLInterface } from "../dtos/FullURlInterface";
+import { ServiceInterface } from "../presentation/protocols/ServiceInterface";
 import { URLRepository } from "../database/repositories/URLRepository";
 import crypto from "crypto";
 import linkExpiresDate from "../shared/linkExpires";

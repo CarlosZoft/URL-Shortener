@@ -1,8 +1,8 @@
 import { getCustomRepository } from "typeorm";
 import { URLDtos } from "../dtos/URLDtos";
 import { NotFoundError } from "../presentation/error";
-import { URLRepository } from "./../database/repositories/URLRepository";
-import { ServiceInterface } from "./../presentation/protocols/ServiceInterface";
+import { URLRepository } from "../database/repositories/URLRepository";
+import { ServiceInterface } from "../presentation/protocols/ServiceInterface";
 
 export class UpdateVisitorService implements ServiceInterface {
   async execute(url_id: string): Promise<any> {

@@ -1,4 +1,4 @@
-import { UrlEntity } from "./../database/entities/UrlEntity";
+import { UrlEntity } from "../database/entities/UrlEntity";
 
 export class URLDtos {
   static of(URL: UrlEntity) {
