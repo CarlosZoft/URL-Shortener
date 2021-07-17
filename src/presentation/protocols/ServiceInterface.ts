@@ -1,3 +1,3 @@
 export interface ServiceInterface {
-  execute({}): Promise<any>;
+  execute({}: any): Promise<any>;
 }
