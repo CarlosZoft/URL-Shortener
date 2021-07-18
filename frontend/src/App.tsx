@@ -4,7 +4,7 @@ import './styles/global.scss';
 
 function App() {
   return (
-      <URLShow></URLShow>
+      <Home></Home>
   );
 }
 

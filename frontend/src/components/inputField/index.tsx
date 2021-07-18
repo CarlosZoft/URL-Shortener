@@ -15,7 +15,7 @@ function InputField(){
       <label>Quantidade de dias</label>
       <OptionValid typeFields={['1','5','10','15']}/>
       <label>Quantidade de acessos</label>
-      <OptionValid typeFields={['ilimitado','10','15','500']}/>
+      <OptionValid typeFields={['5, 10','15','500']}/>
       <Button text="Gerar Link"></Button>
       
     </>

@@ -21,6 +21,13 @@ export class CreateURLService implements ServiceInterface {
     }
     const urlRepository = getCustomRepository(URLRepository);
 
+    const urlAlreadyExists = await urlRepository.findOne({ fullUrl });
+    if (urlAlreadyExists) {
+      return {
+        fullUrl: urlAlreadyExists.fullUrl,
+      };
+    }
+
     do {
       var shortUrl = crypto.randomBytes(3).toString("hex");
       var URLID = await urlRepository.findOne({ shortUrl });
