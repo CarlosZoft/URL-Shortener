@@ -1,32 +1,38 @@
-import {PrimaryColumn, UpdateDateColumn, CreateDateColumn, Column, Entity, Timestamp } from 'typeorm';
-import {v4 as uuid} from 'uuid';
+import {
+  PrimaryColumn,
+  UpdateDateColumn,
+  CreateDateColumn,
+  Column,
+  Entity,
+  Timestamp,
+} from "typeorm";
+import { v4 as uuid } from "uuid";
 
-@Entity('urls')
+@Entity("urls")
 export class UrlEntity {
-  
-  constructor(){
-    if(!this.id){
+  constructor() {
+    if (!this.id) {
       this.id = uuid();
     }
   }
   @PrimaryColumn()
-  readonly id: string
+  readonly id: string;
 
   @Column()
-  fullUrl: string
+  fullUrl: string;
 
   @Column()
-  shortUrl: string
+  shortUrl: string;
 
   @Column()
-  visitQtd: number
+  visitQtd: number;
 
   @Column()
-  linkExpires: Date
+  linkExpires: Date;
 
   @CreateDateColumn()
-  created_at: Date
+  created_at: Date;
 
   @UpdateDateColumn()
-  updated_at: Date
+  updated_at: Date;
 }
