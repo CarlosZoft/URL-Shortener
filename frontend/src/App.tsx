@@ -1,9 +1,10 @@
-import Home from './page/home';
+import Home from './page/Home';
+import URLShow from './page/URLShow';
 import './styles/global.scss';
 
 function App() {
   return (
-      <Home></Home>
+      <URLShow></URLShow>
   );
 }
 
