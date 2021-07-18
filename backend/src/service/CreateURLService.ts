@@ -11,9 +11,16 @@ import crypto from "crypto";
 import linkExpiresDate from "../shared/linkExpires";
 
 export class CreateURLService implements ServiceInterface {
-  async execute({ fullUrl, validDays }: fullURLInterface): Promise<any> {
-    if (!fullUrl) {
-      throw new MissingParamError("fullUrl");
+  async execute({
+    fullUrl,
+    validDays,
+    validAcess,
+  }: fullURLInterface): Promise<any> {
+    const fieldsParam = [fullUrl, validAcess, validDays];
+    for (const field in fieldsParam) {
+      if (!fieldsParam[field]) {
+        throw new InvalidCredentialsError(field);
+      }
     }
     const urlRepository = getCustomRepository(URLRepository);
 
@@ -26,7 +33,7 @@ export class CreateURLService implements ServiceInterface {
     const newUrl = urlRepository.create({
       fullUrl,
       shortUrl,
-      visitQtd: 0,
+      visitQtd: validAcess,
       linkExpires,
     });
 

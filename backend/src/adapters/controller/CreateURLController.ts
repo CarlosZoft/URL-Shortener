@@ -5,12 +5,13 @@ import { CreateURLService } from "../../service/CreateURLService";
 
 export class CreateURLController implements ControllerInterface {
   async handle(request: Request, response: Response): Promise<any> {
-    const { fullUrl, validDays } = request.body;
+    const { fullUrl, validDays, validAcess } = request.body;
 
     const service = new CreateURLService();
     const data = await service.execute({
       fullUrl,
       validDays: parseInt(validDays),
+      validAcess: parseInt(validAcess),
     });
     if (data) {
       response.status(200).json(data);
