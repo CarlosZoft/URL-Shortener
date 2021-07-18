@@ -1,24 +1,36 @@
-import { InputGroup } from 'react-bootstrap';
-import { FormControl } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { InputGroup, FormControl } from 'react-bootstrap';
 import { Button } from '../button';
 import OptionValid from "../optionValid";
+import {days, uses} from '../../shared'
+import { createUrl } from '../../api'
 import './styles.scss';
 
 function InputField(){
+  const [fullUrl, setFullUrl] = useState('');
+
+  const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+    setFullUrl(e.target.value);
+    console.log(fullUrl);
+  }
+  const handleSubmit =(e:any) => {
+    e.preventDefault();
+    console.log(e)
+  }
   return (
-    <>
-      <InputGroup size="lg">
+    
+    <form onSubmit={handleSubmit}>
+      <InputGroup size="lg" id="inputGroup">
           <InputGroup.Text id="inputGroup-sizing-sm">URL</InputGroup.Text>
-          <FormControl aria-label="Large" aria-describedby="inputGroup-sizing-sm" />
+          <FormControl value={fullUrl} onChange={handleChange} aria-label="Large" aria-describedby="inputGroup-sizing-sm" />
       </InputGroup>
       <br/>
-      <label>Quantidade de dias</label>
-      <OptionValid typeFields={['1','5','10','15']}/>
-      <label>Quantidade de acessos</label>
-      <OptionValid typeFields={['5, 10','15','500']}/>
-      <Button text="Gerar Link"></Button>
-      
-    </>
+        <OptionValid typeFields={days} title="Expirar em"/>
+        <OptionValid typeFields={uses} title="Maximo de usos"/>
+        <Button type="submit">
+          Gerar Link
+        </Button>
+    </form>
   )
 }
 export default InputField;

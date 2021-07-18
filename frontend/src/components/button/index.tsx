@@ -1,12 +1,10 @@
+import { ButtonHTMLAttributes } from 'react';
 import './styles.scss';
 
-interface IButton {
-  text: string
-} 
-
-export function Button ({text}: IButton) {
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
+export function Button (props: ButtonProps){
   return (
-    <button type="submit" className="buttonGenerate">{text}</button>
+    <button {...props} className="buttonGenerate"></button>
   )
 
 }
