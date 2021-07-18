@@ -1,7 +1,8 @@
-import { Button } from 'react-bootstrap';
 import { InputGroup } from 'react-bootstrap';
 import { FormControl } from 'react-bootstrap';
+import { Button } from '../button';
 import OptionValid from "../optionValid";
+import './styles.scss';
 
 function InputField(){
   return (
@@ -11,11 +12,12 @@ function InputField(){
           <FormControl aria-label="Large" aria-describedby="inputGroup-sizing-sm" />
       </InputGroup>
       <br/>
-      <OptionValid typeFields={['1','5','10','15']} title="Quantidade de dias"/>
-      <br/>
-      <OptionValid typeFields={['ilimitado','10','15','500']} title="Quantidade de acessos"/>
-      <br/>
-      <Button variant="success" size="lg">Gerar</Button>{''}
+      <label>Quantidade de dias</label>
+      <OptionValid typeFields={['1','5','10','15']}/>
+      <label>Quantidade de acessos</label>
+      <OptionValid typeFields={['ilimitado','10','15','500']}/>
+      <Button text="Gerar Link"></Button>
+      
     </>
   )
 }

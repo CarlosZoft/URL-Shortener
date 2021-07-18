@@ -1,21 +1,20 @@
-import {Dropdown, DropdownButton} from 'react-bootstrap'
+import './styles.scss';
 
 interface IButtonGruoup {
   typeFields: string[];
-  title : string;
 }
 
-function OptionValid ({typeFields, title}: IButtonGruoup){
+function OptionValid ({typeFields}: IButtonGruoup){
   return (
-   <DropdownButton id="dropdown-basic-button" title={title}>
+   <select id="dropdown-basic-button">
      {
-       typeFields.map((field) => {
+       typeFields.map((field, index) => {
          return (
-          <Dropdown.Item eventKey={field}>{field}</Dropdown.Item>
+          <option key={index}>{field}</option>
          )
        })
      }
-   </DropdownButton>
+   </select>
 
   )
 
