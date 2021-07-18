@@ -12,6 +12,6 @@ const router = Router();
 router.get("/:url_id", getURLController.getInfoUrl);
 router.get("/", getURLController.getInfoUrls);
 router.post("/", createURLController.handle);
-router.put("/:url_id", updateVisitorController.handle);
+router.put("/:endpoint", updateVisitorController.handle);
 
 export default router;

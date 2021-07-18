@@ -1,20 +1,37 @@
 import { getCustomRepository } from "typeorm";
-import { URLDtos } from "../dtos/URLDtos";
-import { NotFoundError } from "../presentation/error";
+import { NotFoundError, UnauthorizedError } from "../presentation/error";
 import { URLRepository } from "../database/repositories/URLRepository";
 import { ServiceInterface } from "../presentation/protocols/ServiceInterface";
 
 export class UpdateVisitorService implements ServiceInterface {
-  async execute(url_id: string): Promise<any> {
+  async execute(endpoint: string): Promise<any> {
     const urlRepository = getCustomRepository(URLRepository);
 
-    const URLID = await urlRepository.findOne({ id: url_id });
+    const URLID = await urlRepository.findOne({ shortUrl: endpoint });
     if (!URLID) {
       throw new NotFoundError("URL");
     }
-    URLID.visitQtd += 1;
+    URLID.visitQtd -= 1;
+    if (URLID.visitQtd == 0) {
+      await urlRepository.remove(URLID);
+    }
     await urlRepository.save(URLID);
 
-    return URLDtos.of(URLID);
+    return {
+      fullUrl: URLID.fullUrl,
+    };
+  }
+  async linkExpires(endpoint: string) {
+    const urlRepository = getCustomRepository(URLRepository);
+
+    const URLID = await urlRepository.findOne({ shortUrl: endpoint });
+    if (!URLID) {
+      throw new NotFoundError("URL");
+    }
+    const now = new Date();
+    if (now > URLID.linkExpires) {
+      urlRepository.remove(URLID);
+      throw new UnauthorizedError();
+    }
   }
 }
