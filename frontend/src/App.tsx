@@ -1,10 +1,16 @@
-import Home from './page/Home';
-import URLShow from './page/URLShow';
+import {Home, URLShow} from './page';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
 import './styles/global.scss';
 
 function App() {
   return (
-      <Home></Home>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" exact={true} component={Home}></Route>
+        <Route path="/show" exact={true} component={URLShow}></Route>
+      </Switch>
+    </BrowserRouter>
   );
 }
 
