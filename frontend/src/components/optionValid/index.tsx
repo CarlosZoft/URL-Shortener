@@ -1,20 +1,13 @@
-import { useState } from 'react';
 import {IButtonGruop} from '../../interfaces';
 import './styles.scss';
 
 
-function OptionValid ({typeFields, title}: IButtonGruop){
-  const [options, setOption] = useState(typeFields[0]);
-
-  const handleChange = (e:any) => {
-    setOption(e.currentTarget.value);
-    console.log(options, e.target.value)
-  }
+function OptionValid ({value, change, typeFields, title}: IButtonGruop){
 
   return (
     <>
     <label>{title}</label>
-    <select id="dropdown-basic-button" value={options.name} onChange={handleChange}>
+    <select id="dropdown-basic-button" value={value} onChange={change}>
      {
        typeFields.map((field, index) => {
          return (

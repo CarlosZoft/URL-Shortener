@@ -8,14 +8,26 @@ import './styles.scss';
 
 function InputField(){
   const [fullUrl, setFullUrl] = useState('');
+  const [validDays, setValidDays] = useState(days[0]);
+  const [validAcess, setValidAcess] = useState(uses[0]);
 
   const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     setFullUrl(e.target.value);
-    console.log(fullUrl);
   }
-  const handleSubmit =(e:any) => {
+  const changeDays = (e:any) => {
+    setValidDays(e.target.value);
+  }
+  const changeUses = (e:any) => {
+    setValidAcess(e.target.value);
+  }
+  const handleSubmit = async (e:any) => {
     e.preventDefault();
-    console.log(e)
+    const response = await createUrl({
+      fullUrl,
+      validAcess: validAcess.value,
+      validDays: validDays.value
+    })
+    console.log(response);
   }
   return (
     
@@ -25,8 +37,8 @@ function InputField(){
           <FormControl value={fullUrl} onChange={handleChange} aria-label="Large" aria-describedby="inputGroup-sizing-sm" />
       </InputGroup>
       <br/>
-        <OptionValid typeFields={days} title="Expirar em"/>
-        <OptionValid typeFields={uses} title="Maximo de usos"/>
+        <OptionValid typeFields={days} title="Expirar em" change={changeDays} value = {validDays.value}/>
+        <OptionValid typeFields={uses} title="Maximo de usos" change={changeUses} value = {validAcess.value}/>
         <Button type="submit">
           Gerar Link
         </Button>
