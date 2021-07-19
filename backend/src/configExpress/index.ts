@@ -1,4 +1,5 @@
-import express from "express";
+import express, { Request, Response, NextFunction } from "express";
+import cors from "cors";
 import "express-async-errors";
 import "reflect-metadata";
 import "../database";
@@ -17,6 +18,14 @@ export default () => {
 
   //Middlewares
   app.use(exceptionError);
+
+  app.use(
+    cors({
+      origin: "http://localhost:3000/",
+      credentials: true,
+      optionsSuccessStatus: 200,
+    })
+  );
 
   return app;
 };
