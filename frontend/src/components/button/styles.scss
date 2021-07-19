@@ -6,4 +6,11 @@
   border-radius: 20px;
   margin: 10px 0px;
   cursor: pointer;
+  &:not(:disabled):hover {
+    filter: brightness(0.9);
+  }
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
 }
