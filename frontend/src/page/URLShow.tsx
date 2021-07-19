@@ -1,7 +1,7 @@
 import  OutputField  from '../components/outputField';
 import '../styles/home.scss';
 
-function URLShow(){
+export function URLShow(){
   return (
     <div id="home-page">
       <aside>
@@ -15,4 +15,3 @@ function URLShow(){
   )
 }
 
-export default URLShow;

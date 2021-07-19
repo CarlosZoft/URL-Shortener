@@ -1,7 +1,12 @@
+
 import InputField from "../components/inputField";
 import '../styles/home.scss';
 
-function Home(){
+
+
+export function Home(){
+
+
   return (
     <div id="home-page">
       <aside>
@@ -14,5 +19,3 @@ function Home(){
     </div>
   )
 }
-
-export default Home;
