@@ -31,6 +31,7 @@ export class UpdateVisitorService implements ServiceInterface {
     const now = new Date();
     if (now > URLID.linkExpires) {
       urlRepository.remove(URLID);
+      urlRepository.save(URLID);
       throw new UnauthorizedError();
     }
   }
