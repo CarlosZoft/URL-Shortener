@@ -24,7 +24,7 @@ export class CreateURLService implements ServiceInterface {
     const urlAlreadyExists = await urlRepository.findOne({ fullUrl });
     if (urlAlreadyExists) {
       return {
-        fullUrl: urlAlreadyExists.fullUrl,
+        shortUrl: urlAlreadyExists.shortUrl,
       };
     }
 
