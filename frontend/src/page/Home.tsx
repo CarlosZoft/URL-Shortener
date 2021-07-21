@@ -1,11 +1,11 @@
 
+import { useState } from "react";
 import InputField from "../components/inputField";
 import '../styles/home.scss';
 
 
 
 export function Home(){
-
 
   return (
     <div id="home-page">

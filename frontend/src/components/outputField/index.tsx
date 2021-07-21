@@ -1,20 +1,31 @@
 import { InputGroup, FormControl } from "react-bootstrap";
 import { Button } from "../button";
 import '../../components/inputField/styles.scss'
+import { useRef, useState } from "react";
 
 
-function OutputField () {
-  const handleSubmit =(e:any) => {
-    e.preventDefault();
-    console.log(e)
+function OutputField (props: any) {
+  const [copySuccess, setCopySuccess] = useState('');
+  const FormControlRef = useRef(null);
+
+  const handleCopy = (e:any) => {
+    FormControlRef.current.select();
+    document.execCommand('copy');
+    e.target.focus();
+    setCopySuccess('Copied!');
   }
   return (
-    <form onSubmit={handleSubmit}>
+    <form>
        <InputGroup size="lg">
           <InputGroup.Text id="inputGroup-sizing-sm">Nova URL</InputGroup.Text>
-          <FormControl aria-label="Large" aria-describedby="inputGroup-sizing-sm"/>
+          <FormControl 
+            aria-label="Large" 
+            aria-describedby="inputGroup-sizing-sm" 
+            value ={props.params.endpoint}
+            ref={FormControlRef}
+          />
       </InputGroup>
-      <Button type="submit">Copiar Link</Button>
+      <Button onClick={handleCopy}>Copiar Link</Button>
     </form>
   )
 }

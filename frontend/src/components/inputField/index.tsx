@@ -1,27 +1,26 @@
 import React, { useState } from 'react';
 import { InputGroup, FormControl } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import { validURL } from '../../validation/urlValidation';
 import { Button } from '../button';
 import OptionValid from "../optionValid";
 import { days, uses } from '../../shared'
 import { createUrl } from '../../api'
+import {useHistory} from 'react-router-dom';
 import './styles.scss';
-import { stringify } from 'querystring';
 
-function InputField(){
+function InputField(props: any){
   const [fullUrl, setFullUrl] = useState('');
   const [validDays, setValidDays] = useState(days[0].value);
   const [validAcess, setValidAcess] = useState(uses[0].value);
-  let shortUrl;
-  let endpoint = "/show/" + stringify(shortUrl);
-
+  let shortUrl = '';
+  let history = useHistory();
   const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => setFullUrl(e.target.value);
   
   const changeDays = (e:any) => setValidDays(e.target.value);
   
   const changeUses = (e:any) => setValidAcess(e.target.value);
-  
+
+ 
   const handleSubmit = async (e:any) => {
     e.preventDefault();
     if(validURL(fullUrl)){
@@ -31,10 +30,10 @@ function InputField(){
         validDays: validDays
       })
       shortUrl = data.shortUrl;
-      return 'sucess';
+      history.push('/show/'+ shortUrl);
+      return
     }
     alert("Informe uma URL válida!");
-    return 'fail';
   }
   return (
     
