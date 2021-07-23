@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 
 
 function OutputField (props) {
+  const urlFull = props.params.endpoint;
   const [copySuccess, setCopySuccess] = useState('');
   const FormControlRef = useRef(null);
 
@@ -21,11 +22,14 @@ function OutputField (props) {
           <FormControl 
             aria-label="Large" 
             aria-describedby="inputGroup-sizing-sm" 
-            value ={props.params.endpoint}
+            value = {(urlFull) ? "http://localhost:3030/" + urlFull : ""}
             ref={FormControlRef}
           />
       </InputGroup>
-      <Button onClick={handleCopy}>Copiar Link</Button>
+      <div>
+        <Button onClick={handleCopy}>Copiar Link</Button><br/>
+        {copySuccess}
+      </div>
     </form>
   )
 }
