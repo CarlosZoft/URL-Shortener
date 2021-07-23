@@ -4,11 +4,11 @@ import '../../components/inputField/styles.scss'
 import { useRef, useState } from "react";
 
 
-function OutputField (props: any) {
+function OutputField (props) {
   const [copySuccess, setCopySuccess] = useState('');
   const FormControlRef = useRef(null);
 
-  const handleCopy = (e:any) => {
+  const handleCopy = (e) => {
     FormControlRef.current.select();
     document.execCommand('copy');
     e.target.focus();
