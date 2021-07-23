@@ -21,7 +21,7 @@ export default () => {
   app.use(express.json());
 
   // Routes
-  app.use("/urls", URLRoutes);
+  app.use(URLRoutes);
 
   //Middlewares
   app.use(exceptionError);

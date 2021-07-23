@@ -23,6 +23,9 @@ export class CreateURLService implements ServiceInterface {
 
     const urlAlreadyExists = await urlRepository.findOne({ fullUrl });
     if (urlAlreadyExists) {
+      urlAlreadyExists.linkExpires = linkExpiresDate.dateLinkExpires(validDays);
+      urlAlreadyExists.visitQtd += validAcess;
+      await urlRepository.save(urlAlreadyExists);
       return {
         shortUrl: urlAlreadyExists.shortUrl,
       };
