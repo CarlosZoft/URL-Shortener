@@ -9,7 +9,7 @@ const updateVisitorController = new UpdateVisitorController();
 
 const router = Router();
 
-router.get("/:url_id", getURLController.getInfoUrl);
+router.get("/get/:url_id", getURLController.getInfoUrl);
 router.get("/", getURLController.getInfoUrls);
 router.post("/", createURLController.handle);
 router.get("/:endpoint", updateVisitorController.handle);
