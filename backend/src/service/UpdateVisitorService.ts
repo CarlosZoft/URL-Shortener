@@ -6,7 +6,7 @@ import { ServiceInterface } from "../presentation/protocols/ServiceInterface";
 export class UpdateVisitorService implements ServiceInterface {
   async execute(endpoint: string): Promise<any> {
     const urlRepository = getCustomRepository(URLRepository);
-
+    console.log(endpoint);
     const URLID = await urlRepository.findOne({ shortUrl: endpoint });
     if (!URLID) {
       throw new NotFoundError("URL");
@@ -17,13 +17,17 @@ export class UpdateVisitorService implements ServiceInterface {
     }
     await urlRepository.save(URLID);
 
+    const fullUrl =
+      URLID.fullUrl.substring(0, 3) === "http"
+        ? URLID.fullUrl
+        : "https://" + URLID.fullUrl;
+
     return {
-      fullUrl: URLID.fullUrl,
+      fullUrl,
     };
   }
   async linkExpires(endpoint: string) {
     const urlRepository = getCustomRepository(URLRepository);
-
     const URLID = await urlRepository.findOne({ shortUrl: endpoint });
     if (!URLID) {
       throw new NotFoundError("URL");

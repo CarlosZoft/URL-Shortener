@@ -11,6 +11,7 @@ export class UpdateVisitorController implements ControllerInterface {
     const service = new UpdateVisitorService();
     await service.linkExpires(endpoint);
     const data = await service.execute(endpoint);
-    response.redirect(data.fullUrl);
+    console.log(data);
+    return response.redirect(data.fullUrl);
   }
 }
